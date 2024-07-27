@@ -12,9 +12,9 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('task_categories', function (Blueprint $table) {
-            $table->unsignedBigInteger('task_id');
-            $table->unsignedBigInteger('category_id');
-            $table->primary(['task_id', 'category_id']);
+            $table->id();
+            $table->foreignId('task_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('category_id')->constrained()->cascadeOnDelete();
             $table->timestamps();
         });
     }
